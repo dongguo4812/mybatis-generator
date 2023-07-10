@@ -1,14 +1,13 @@
 package com.dongguo.entity;
 
+import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_user")
 public class User {
-    /**
-     * 主键
-     */
-    @Column(name = "user_id")
-    private Integer userId;
+    @Id
+    @GeneratedValue(generator = "JDBC")
+    private Integer id;
 
     /**
      * 用户名
@@ -16,26 +15,44 @@ public class User {
     private String username;
 
     /**
-     * 余额（无符号）
+     * 密码
      */
-    private Integer balance;
+    private String password;
 
     /**
-     * 获取主键
-     *
-     * @return user_id - 主键
+     * 性别 0=女 1=男 
      */
-    public Integer getUserId() {
-        return userId;
+    private Byte sex;
+
+    /**
+     * 删除标志，默认0不删除，1删除
+     */
+    private Byte deleted;
+
+    /**
+     * 更新时间
+     */
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
+
+    /**
+     * @return id
+     */
+    public Integer getId() {
+        return id;
     }
 
     /**
-     * 设置主键
-     *
-     * @param userId 主键
+     * @param id
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**
@@ -57,20 +74,92 @@ public class User {
     }
 
     /**
-     * 获取余额（无符号）
+     * 获取密码
      *
-     * @return balance - 余额（无符号）
+     * @return password - 密码
      */
-    public Integer getBalance() {
-        return balance;
+    public String getPassword() {
+        return password;
     }
 
     /**
-     * 设置余额（无符号）
+     * 设置密码
      *
-     * @param balance 余额（无符号）
+     * @param password 密码
      */
-    public void setBalance(Integer balance) {
-        this.balance = balance;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * 获取性别 0=女 1=男 
+     *
+     * @return sex - 性别 0=女 1=男 
+     */
+    public Byte getSex() {
+        return sex;
+    }
+
+    /**
+     * 设置性别 0=女 1=男 
+     *
+     * @param sex 性别 0=女 1=男 
+     */
+    public void setSex(Byte sex) {
+        this.sex = sex;
+    }
+
+    /**
+     * 获取删除标志，默认0不删除，1删除
+     *
+     * @return deleted - 删除标志，默认0不删除，1删除
+     */
+    public Byte getDeleted() {
+        return deleted;
+    }
+
+    /**
+     * 设置删除标志，默认0不删除，1删除
+     *
+     * @param deleted 删除标志，默认0不删除，1删除
+     */
+    public void setDeleted(Byte deleted) {
+        this.deleted = deleted;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    /**
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }
